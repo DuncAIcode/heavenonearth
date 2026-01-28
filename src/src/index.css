@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-heaven-dark text-heaven-starlight selection:bg-heaven-emerald selection:text-heaven-dark;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-heaven-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-heaven-emerald/30 rounded-full hover:bg-heaven-emerald/50;
+}

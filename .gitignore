@@ -1,0 +1,26 @@
+# Environment & Secrets
+.env
+.env*.local
+
+# Dependencies
+node_modules/
+tools/node_modules/
+src/node_modules/
+
+# Build Outputs
+dist/
+src/dist/
+.tmp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
