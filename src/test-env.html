@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .status { padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #2d5016; border-left: 4px solid #4caf50; }
+        .error { background: #5d1a1a; border-left: 4px solid #f44336; }
+        .info { background: #1a3d5d; border-left: 4px solid #2196f3; }
+        code { background: #333; padding: 2px 6px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🌲 Heaven on Earth - Environment Diagnostic</h1>
+    
+    <div id="results"></div>
+
+    <script type="module">
+        const results = document.getElementById('results');
+        
+        function addStatus(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = message;
+            results.appendChild(div);
+        }
+
+        // Check environment variables
+        const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+        const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+        addStatus('<h2>Environment Variables Check</h2>');
+        
+        if (supabaseUrl) {
+            addStatus(`✅ <strong>VITE_SUPABASE_URL</strong> is set: <code>${supabaseUrl}</code>`, 'success');
+        } else {
+            addStatus('❌ <strong>VITE_SUPABASE_URL</strong> is MISSING', 'error');
+        }
+
+        if (supabaseKey) {
+            addStatus(`✅ <strong>VITE_SUPABASE_ANON_KEY</strong> is set: <code>${supabaseKey.substring(0, 20)}...</code>`, 'success');
+        } else {
+            addStatus('❌ <strong>VITE_SUPABASE_ANON_KEY</strong> is MISSING', 'error');
+        }
+
+        // Test Supabase connection
+        if (supabaseUrl && supabaseKey) {
+            addStatus('<h2>Testing Supabase Connection</h2>');
+            
+            try {
+                const { createClient } = await import('@supabase/supabase-js');
+                const supabase = createClient(supabaseUrl, supabaseKey);
+                
+                addStatus('✅ Supabase client created successfully', 'success');
+                
+                // Try a simple query
+                const { data, error } = await supabase.from('posts').select('count');
+                
+                if (error) {
+                    addStatus(`⚠️ Database query error: <code>${error.message}</code>`, 'error');
+                } else {
+                    addStatus('✅ Database connection successful!', 'success');
+                }
+            } catch (err) {
+                addStatus(`❌ Error creating Supabase client: <code>${err.message}</code>`, 'error');
+            }
+        }
+
+        // Check if main app would load
+        addStatus('<h2>Main App Status</h2>');
+        if (!supabaseUrl || !supabaseKey) {
+            addStatus('❌ Main app will fail to load due to missing environment variables', 'error');
+            addStatus('<strong>Solution:</strong> Add the environment variables in Vercel project settings and redeploy', 'info');
+        } else {
+            addStatus('✅ Environment variables are configured correctly', 'success');
+            addStatus('Main app should load. If you see this page but not the main app, there may be a routing or build issue.', 'info');
+        }
+    </script>
+</body>
+</html>
