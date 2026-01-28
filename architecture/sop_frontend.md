@@ -10,7 +10,7 @@
 
 ## Animation Rules (Framer Motion)
 - **Hero Section**: Must include "Staggered Fade In" and "Floating" elements.
-- **Micro-interactions**: Buttons should scale `0.95` on click and glow on hover.
+- micro-interactions: Buttons should scale `0.95` on click and glow on hover.
 - **Transitions**: Page transitions should use `AnimatePresence`.
 
 ## Component Guidelines
