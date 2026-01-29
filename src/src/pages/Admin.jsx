@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LayoutDashboard, Send, Sparkles, Image as ImageIcon, CheckCircle, AlertCircle, Loader2, Upload, X } from 'lucide-react';
+import { LayoutDashboard, Send, Sparkles, Image as ImageIcon, CheckCircle, AlertCircle, Loader2, Upload, X, Home } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useNavigate } from 'react-router-dom';
 
