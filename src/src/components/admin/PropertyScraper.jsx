@@ -43,7 +43,7 @@ const PropertyScraper = ({ onManifest }) => {
                     url: url,
                     formats: ['extract'],
                     extract: {
-                        prompt: "Extract the property title, price, location, description, key features (as a list), and the main image URL.",
+                        prompt: "Extract the property title, price, location (city/area), description, key features (as a list), main image URL, and the source URL. Also, try to identify the latitude and longitude of the property or the general area.",
                         schema: {
                             type: "object",
                             properties: {
@@ -52,7 +52,10 @@ const PropertyScraper = ({ onManifest }) => {
                                 location: { type: "string" },
                                 description: { type: "string" },
                                 features: { type: "array", items: { type: "string" } },
-                                image_url: { type: "string" }
+                                image_url: { type: "string" },
+                                source_url: { type: "string" },
+                                latitude: { type: "number" },
+                                longitude: { type: "number" }
                             },
                             required: ["title", "description"]
                         }
@@ -80,7 +83,10 @@ const PropertyScraper = ({ onManifest }) => {
                 price: extracted.price || "Price on Request",
                 location: extracted.location || "Unknown Location",
                 image_url: extracted.image_url || "https://placedog.net/800/600?random", // Fallback image
-                features: extracted.features || []
+                features: extracted.features || [],
+                source_url: extracted.source_url || url, // Use extracted or fallback to input URL
+                latitude: extracted.latitude || null,
+                longitude: extracted.longitude || null
             };
 
             setScrapedData(mappedData);

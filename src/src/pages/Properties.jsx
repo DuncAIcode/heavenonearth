@@ -13,11 +13,13 @@ import {
     Trees as Tree
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import PropertyMap from '../components/PropertyMap';
 
 const Properties = () => {
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedProperty, setSelectedProperty] = useState(null);
+    const [viewMode, setViewMode] = useState('list'); // 'list' or 'map'
 
     useEffect(() => {
         fetchProperties();
@@ -79,66 +81,101 @@ const Properties = () => {
                     </motion.p>
                 </div>
 
-                {/* Properties Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {loading ? (
-                        <div className="col-span-full py-40 flex flex-col items-center gap-6">
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                                className="p-4 rounded-full bg-heaven-emerald/5 border border-heaven-emerald/20"
-                            >
-                                <Loader2 className="text-heaven-emerald" size={40} />
-                            </motion.div>
-                            <span className="text-xs uppercase tracking-[0.4em] text-heaven-emerald animate-pulse">Scanning the Ether...</span>
-                        </div>
-                    ) : properties.length === 0 ? (
-                        <div className="col-span-full py-40 text-center border border-white/5 bg-white/5 backdrop-blur-md rounded-[3rem]">
-                            <h2 className="text-2xl font-serif text-heaven-starlight/20 italic">The manifest is currently still. Check back as new sanctuaries emerge.</h2>
-                        </div>
-                    ) : (
-                        properties.map((property, index) => (
-                            <motion.div
-                                key={property.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group cursor-pointer"
-                                onClick={() => setSelectedProperty(property)}
-                            >
-                                <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-6 border border-white/10 group-hover:border-heaven-emerald/40 transition-all duration-700 shadow-2xl">
-                                    <img
-                                        src={property.image_url}
-                                        alt={property.title}
-                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-heaven-dark via-transparent to-transparent opacity-80" />
+                {/* View Toggle */}
+                <div className="flex justify-center mb-10">
+                    <div className="bg-heaven-dark/60 border border-heaven-emerald/20 p-1 rounded-full flex gap-1">
+                        <button
+                            onClick={() => setViewMode('list')}
+                            className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${viewMode === 'list'
+                                ? 'bg-heaven-emerald text-heaven-dark shadow-lg shadow-heaven-emerald/20'
+                                : 'text-heaven-starlight/40 hover:text-heaven-emerald'
+                                }`}
+                        >
+                            List View
+                        </button>
+                        <button
+                            onClick={() => setViewMode('map')}
+                            className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all ${viewMode === 'map'
+                                ? 'bg-heaven-emerald text-heaven-dark shadow-lg shadow-heaven-emerald/20'
+                                : 'text-heaven-starlight/40 hover:text-heaven-emerald'
+                                }`}
+                        >
+                            Map View
+                        </button>
+                    </div>
+                </div>
 
-                                    <div className="absolute top-6 right-6">
-                                        <div className="px-4 py-2 bg-heaven-dark/60 backdrop-blur-md border border-white/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest text-heaven-emerald">
-                                            {property.status}
-                                        </div>
-                                    </div>
+                {/* Content Area */}
+                {viewMode === 'list' ? (
+                    /* Properties Grid - List View */
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {loading ? (
+                            <div className="col-span-full py-40 flex flex-col items-center gap-6">
+                                <motion.div
+                                    animate={{ rotate: 360 }}
+                                    transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+                                    className="p-4 rounded-full bg-heaven-emerald/5 border border-heaven-emerald/20"
+                                >
+                                    <Loader2 className="text-heaven-emerald" size={40} />
+                                </motion.div>
+                                <span className="text-xs uppercase tracking-[0.4em] text-heaven-emerald animate-pulse">Scanning the Ether...</span>
+                            </div>
+                        ) : properties.length === 0 ? (
+                            <div className="col-span-full py-40 text-center border border-white/5 bg-white/5 backdrop-blur-md rounded-[3rem]">
+                                <h2 className="text-2xl font-serif text-heaven-starlight/20 italic">The manifest is currently still. Check back as new sanctuaries emerge.</h2>
+                            </div>
+                        ) : (
+                            properties.map((property, index) => (
+                                <motion.div
+                                    key={property.id}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="group cursor-pointer"
+                                    onClick={() => setSelectedProperty(property)}
+                                >
+                                    <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-6 border border-white/10 group-hover:border-heaven-emerald/40 transition-all duration-700 shadow-2xl">
+                                        <img
+                                            src={property.image_url}
+                                            alt={property.title}
+                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-heaven-dark via-transparent to-transparent opacity-80" />
 
-                                    <div className="absolute bottom-6 left-6 right-6">
-                                        <div className="flex items-center gap-2 text-heaven-emerald/80 text-[10px] uppercase tracking-[0.2em] font-bold mb-2">
-                                            <MapPin size={12} />
-                                            {property.location}
+                                        <div className="absolute top-6 right-6">
+                                            <div className="px-4 py-2 bg-heaven-dark/60 backdrop-blur-md border border-white/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest text-heaven-emerald">
+                                                {property.status}
+                                            </div>
                                         </div>
-                                        <h3 className="text-2xl font-serif text-heaven-starlight leading-tight group-hover:text-heaven-emerald transition-colors">{property.title}</h3>
-                                        <div className="mt-4 flex items-center justify-between">
-                                            <span className="text-heaven-starlight/60 font-serif italic text-lg">{property.price}</span>
-                                            <div className="flex items-center gap-2 text-heaven-emerald text-xs uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0">
-                                                Explore
-                                                <ArrowRight size={14} />
+
+                                        <div className="absolute bottom-6 left-6 right-6">
+                                            <div className="flex items-center gap-2 text-heaven-emerald/80 text-[10px] uppercase tracking-[0.2em] font-bold mb-2">
+                                                <MapPin size={12} />
+                                                {property.location}
+                                            </div>
+                                            <h3 className="text-2xl font-serif text-heaven-starlight leading-tight group-hover:text-heaven-emerald transition-colors">{property.title}</h3>
+                                            <div className="mt-4 flex items-center justify-between">
+                                                <span className="text-heaven-starlight/60 font-serif italic text-lg">{property.price}</span>
+                                                <div className="flex items-center gap-2 text-heaven-emerald text-xs uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-all transform translate-x-4 group-hover:translate-x-0">
+                                                    Explore
+                                                    <ArrowRight size={14} />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))
-                    )}
-                </div>
+                                </motion.div>
+                            ))
+                        )}
+                    </div>
+                ) : (
+                    /* Map View */
+                    <PropertyMap
+                        properties={properties}
+                        onSelectProperty={setSelectedProperty}
+                        onViewList={() => setViewMode('list')}
+                    />
+                )}
+
             </div>
 
             {/* Detailed Property Modal */}
@@ -207,9 +244,21 @@ const Properties = () => {
                                     ))}
                                 </div>
 
-                                <button className="w-full py-5 bg-heaven-emerald text-heaven-dark font-bold uppercase tracking-[0.3em] text-xs rounded-2xl shadow-xl shadow-heaven-emerald/20 hover:scale-[1.02] transition-transform active:scale-95">
-                                    Inquire for Passage
-                                </button>
+                                <div className="flex flex-col gap-3">
+                                    <button className="w-full py-4 bg-heaven-emerald text-heaven-dark font-bold uppercase tracking-[0.3em] text-xs rounded-2xl shadow-xl shadow-heaven-emerald/20 hover:scale-[1.02] transition-transform active:scale-95">
+                                        Inquire for Passage
+                                    </button>
+                                    {selectedProperty.source_url && (
+                                        <a
+                                            href={selectedProperty.source_url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-full py-3 text-center border border-heaven-emerald/20 text-heaven-emerald/60 hover:text-heaven-emerald hover:border-heaven-emerald/50 font-bold uppercase tracking-[0.2em] text-[10px] rounded-2xl transition-all"
+                                        >
+                                            View Original Listing
+                                        </a>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
