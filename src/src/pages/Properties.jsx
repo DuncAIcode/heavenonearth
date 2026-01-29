@@ -185,82 +185,84 @@ const Properties = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12 overflow-y-auto"
+                        className="fixed inset-0 z-[100] overflow-y-auto"
                     >
-                        <div
-                            className="absolute inset-0 bg-heaven-dark/95 backdrop-blur-2xl"
-                            onClick={() => setSelectedProperty(null)}
-                        />
+                        <div className="flex min-h-full items-center justify-center p-6 md:p-12">
+                            <div
+                                className="fixed inset-0 bg-heaven-dark/95 backdrop-blur-2xl"
+                                onClick={() => setSelectedProperty(null)}
+                            />
 
-                        <motion.div
-                            initial={{ scale: 0.9, y: 40, opacity: 0 }}
-                            animate={{ scale: 1, y: 0, opacity: 1 }}
-                            exit={{ scale: 0.9, y: 40, opacity: 0 }}
-                            className="relative z-10 w-full max-w-6xl bg-heaven-dark border border-white/10 rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(16,185,129,0.1)] flex flex-col md:flex-row"
-                        >
-                            {/* Image Section */}
-                            <div className="w-full md:w-1/2 aspect-square md:aspect-auto relative">
-                                <img
-                                    src={selectedProperty.image_url}
-                                    alt={selectedProperty.title}
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-heaven-dark to-transparent" />
-                                <button
-                                    onClick={() => setSelectedProperty(null)}
-                                    className="absolute top-8 left-8 p-3 bg-heaven-dark/60 backdrop-blur-md border border-white/10 rounded-full hover:bg-heaven-emerald transition-colors"
-                                >
-                                    <ArrowRight className="rotate-180" size={24} />
-                                </button>
-                            </div>
-
-                            {/* Content Section */}
-                            <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                                <div className="mb-8">
-                                    <div className="flex items-center gap-3 text-heaven-emerald text-xs font-bold uppercase tracking-widest mb-4">
-                                        <Tree size={16} />
-                                        Living Sanctuary
-                                    </div>
-                                    <h2 className="text-4xl md:text-5xl font-serif mb-4 leading-tight">{selectedProperty.title}</h2>
-                                    <div className="flex items-center gap-4 py-4 border-y border-white/5 mb-6">
-                                        <div className="flex items-center gap-2 text-heaven-starlight/40 text-sm italic font-serif">
-                                            <MapPin size={16} className="text-heaven-emerald" />
-                                            {selectedProperty.location}
-                                        </div>
-                                        <div className="w-px h-4 bg-white/10" />
-                                        <div className="text-heaven-emerald font-bold text-lg">{selectedProperty.price}</div>
-                                    </div>
-                                    <p className="text-heaven-starlight/60 text-lg leading-relaxed font-serif italic mb-8">
-                                        "{selectedProperty.description}"
-                                    </p>
-                                </div>
-
-                                <div className="grid grid-cols-2 gap-6 mb-12">
-                                    {selectedProperty.features?.map((feature, i) => (
-                                        <div key={i} className="flex items-center gap-3 text-heaven-starlight/40">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-heaven-emerald" />
-                                            <span className="text-[10px] uppercase tracking-widest font-bold">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="flex flex-col gap-3">
-                                    <button className="w-full py-4 bg-heaven-emerald text-heaven-dark font-bold uppercase tracking-[0.3em] text-xs rounded-2xl shadow-xl shadow-heaven-emerald/20 hover:scale-[1.02] transition-transform active:scale-95">
-                                        Inquire for Passage
+                            <motion.div
+                                initial={{ scale: 0.9, y: 40, opacity: 0 }}
+                                animate={{ scale: 1, y: 0, opacity: 1 }}
+                                exit={{ scale: 0.9, y: 40, opacity: 0 }}
+                                className="relative z-10 w-full max-w-6xl bg-heaven-dark border border-white/10 rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(16,185,129,0.1)] flex flex-col md:flex-row my-8"
+                            >
+                                {/* Image Section */}
+                                <div className="w-full md:w-1/2 aspect-square md:aspect-auto relative min-h-[400px]">
+                                    <img
+                                        src={selectedProperty.image_url}
+                                        alt={selectedProperty.title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-heaven-dark to-transparent" />
+                                    <button
+                                        onClick={() => setSelectedProperty(null)}
+                                        className="absolute top-8 left-8 p-3 bg-heaven-dark/60 backdrop-blur-md border border-white/10 rounded-full hover:bg-heaven-emerald transition-colors z-20"
+                                    >
+                                        <ArrowRight className="rotate-180" size={24} />
                                     </button>
-                                    {selectedProperty.source_url && (
-                                        <a
-                                            href={selectedProperty.source_url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="w-full py-3 text-center border border-heaven-emerald/20 text-heaven-emerald/60 hover:text-heaven-emerald hover:border-heaven-emerald/50 font-bold uppercase tracking-[0.2em] text-[10px] rounded-2xl transition-all"
-                                        >
-                                            View Original Listing
-                                        </a>
-                                    )}
                                 </div>
-                            </div>
-                        </motion.div>
+
+                                {/* Content Section */}
+                                <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-heaven-dark">
+                                    <div className="mb-8">
+                                        <div className="flex items-center gap-3 text-heaven-emerald text-xs font-bold uppercase tracking-widest mb-4">
+                                            <Tree size={16} />
+                                            Living Sanctuary
+                                        </div>
+                                        <h2 className="text-4xl md:text-5xl font-serif mb-4 leading-tight text-white">{selectedProperty.title}</h2>
+                                        <div className="flex items-center gap-4 py-4 border-y border-white/5 mb-6">
+                                            <div className="flex items-center gap-2 text-heaven-starlight/60 text-sm italic font-serif">
+                                                <MapPin size={16} className="text-heaven-emerald" />
+                                                {selectedProperty.location}
+                                            </div>
+                                            <div className="w-px h-4 bg-white/10" />
+                                            <div className="text-heaven-emerald font-bold text-lg">{selectedProperty.price}</div>
+                                        </div>
+                                        <p className="text-heaven-starlight/80 text-lg leading-relaxed font-serif italic mb-8">
+                                            "{selectedProperty.description}"
+                                        </p>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-6 mb-12">
+                                        {selectedProperty.features?.map((feature, i) => (
+                                            <div key={i} className="flex items-center gap-3 text-heaven-starlight/60">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-heaven-emerald" />
+                                                <span className="text-[10px] uppercase tracking-widest font-bold">{feature}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="flex flex-col gap-3">
+                                        <button className="w-full py-4 bg-heaven-emerald text-heaven-dark font-bold uppercase tracking-[0.3em] text-xs rounded-2xl shadow-xl shadow-heaven-emerald/20 hover:scale-[1.02] transition-transform active:scale-95">
+                                            Inquire for Passage
+                                        </button>
+                                        {selectedProperty.source_url && (
+                                            <a
+                                                href={selectedProperty.source_url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-full py-3 text-center border border-heaven-emerald/20 text-heaven-emerald/60 hover:text-heaven-emerald hover:border-heaven-emerald/50 font-bold uppercase tracking-[0.2em] text-[10px] rounded-2xl transition-all"
+                                            >
+                                                View Original Listing
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
