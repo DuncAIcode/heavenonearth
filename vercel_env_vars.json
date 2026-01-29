@@ -1,0 +1,38 @@
+﻿[
+    {
+        "type":  "encrypted",
+        "key":  "VITE_SUPABASE_URL",
+        "value":  "VUcXQuu4uu10uBs5zcAL1n4frJd+vMEiXEkPD5WHLPU=",
+        "target":  [
+                       "production",
+                       "preview",
+                       "development"
+                   ],
+        "configurationId":  null,
+        "createdAt":  1769605179918,
+        "updatedAt":  1769605179918,
+        "createdBy":  "dTBexNOvSIwMgkGOVZaL91SZ",
+        "updatedBy":  null,
+        "id":  "l7sv67GRPjjJV5A7",
+        "decrypted":  false,
+        "lastEditedByDisplayName":  "Dunc AI"
+    },
+    {
+        "type":  "encrypted",
+        "key":  "VITE_SUPABASE_ANON_KEY",
+        "value":  "uNucl3ENyXmsdhgV6j1i4Wvz43y7KO+7elV7oH+UKcg=",
+        "target":  [
+                       "production",
+                       "preview",
+                       "development"
+                   ],
+        "configurationId":  null,
+        "createdAt":  1769605179918,
+        "updatedAt":  1769605179918,
+        "createdBy":  "dTBexNOvSIwMgkGOVZaL91SZ",
+        "updatedBy":  null,
+        "id":  "RvaZro4dlmNFfrz8",
+        "decrypted":  false,
+        "lastEditedByDisplayName":  "Dunc AI"
+    }
+]

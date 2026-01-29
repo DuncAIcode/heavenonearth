@@ -24,22 +24,47 @@ import ScrollToTop from './components/ScrollToTop';
 function App() {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Check active sessions and subscribe to changes
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+    try {
+      // Check active sessions and subscribe to changes
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        setSession(session);
+        setLoading(false);
+      }).catch(err => {
+        console.error('Auth error:', err);
+        setError(err.message || 'Failed to initialize authentication');
+        setLoading(false);
+      });
+
+      const {
+        data: { subscription },
+      } = supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session);
+      });
+
+      return () => subscription.unsubscribe();
+    } catch (err) {
+      console.error('Supabase initialization error:', err);
+      setError(err.message || 'Failed to connect to backend services');
       setLoading(false);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
+    }
   }, []);
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-heaven-dark flex items-center justify-center p-8">
+        <div className="max-w-md text-center space-y-4">
+          <div className="text-red-500 text-2xl mb-4">⚠️ Configuration Error</div>
+          <div className="text-heaven-light/70 text-sm">{error}</div>
+          <div className="text-heaven-light/50 text-xs mt-6">
+            Please check your environment variables and try again.
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

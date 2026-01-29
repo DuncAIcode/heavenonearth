@@ -1,0 +1,692 @@
+﻿{
+    "projects":  [
+                     {
+                         "accountId":  "team_tGJZuiLfripfM56XEVVjjunI",
+                         "speedInsights":  {
+                                               "id":  "LjFHAdetAUyBUn6lr3AWY72V9Eu",
+                                               "hasData":  false
+                                           },
+                         "autoExposeSystemEnvs":  true,
+                         "autoAssignCustomDomains":  true,
+                         "autoAssignCustomDomainsUpdatedBy":  "system",
+                         "buildCommand":  null,
+                         "createdAt":  1769600915894,
+                         "crons":  {
+                                       "enabledAt":  1769600924078,
+                                       "disabledAt":  null,
+                                       "updatedAt":  1769606450247,
+                                       "deploymentId":  "dpl_3ePFA9jWwBHXCGtUNNoP1gS6BdUQ",
+                                       "definitions":  [
+
+                                                       ]
+                                   },
+                         "devCommand":  null,
+                         "directoryListing":  false,
+                         "env":  [
+
+                                 ],
+                         "framework":  null,
+                         "gitForkProtection":  true,
+                         "gitLFS":  false,
+                         "id":  "prj_F8n57yXPQfwlLbPnj4yFzcD9NecP",
+                         "installCommand":  null,
+                         "lastRollbackTarget":  null,
+                         "lastAliasRequest":  null,
+                         "name":  "heavenonearth",
+                         "nodeVersion":  "24.x",
+                         "outputDirectory":  null,
+                         "productionDeploymentsFastLane":  true,
+                         "publicSource":  null,
+                         "defaultResourceConfig":  {
+                                                       "fluid":  true,
+                                                       "functionDefaultRegions":  [
+                                                                                      "iad1"
+                                                                                  ],
+                                                       "functionDefaultTimeout":  300,
+                                                       "functionDefaultMemoryType":  "standard",
+                                                       "functionZeroConfigFailover":  false,
+                                                       "elasticConcurrencyEnabled":  false
+                                                   },
+                         "resourceConfig":  {
+                                                "fluid":  true,
+                                                "functionDefaultRegions":  [
+                                                                               "iad1"
+                                                                           ]
+                                            },
+                         "rootDirectory":  null,
+                         "serverlessFunctionRegion":  "iad1",
+                         "sourceFilesOutsideRootDirectory":  true,
+                         "ssoProtection":  {
+                                               "deploymentType":  "all_except_custom_domains"
+                                           },
+                         "updatedAt":  1769606450247,
+                         "live":  false,
+                         "gitComments":  {
+                                             "onCommit":  false,
+                                             "onPullRequest":  true
+                                         },
+                         "gitProviderOptions":  {
+                                                    "createDeployments":  "enabled"
+                                                },
+                         "webAnalytics":  {
+                                              "id":  "3gNr4lyJv5DCQCTXei1Ge6hZ4"
+                                          },
+                         "oidcTokenConfig":  {
+                                                 "enabled":  true,
+                                                 "issuerMode":  "team"
+                                             },
+                         "hasDeployments":  true,
+                         "link":  {
+                                      "type":  "github",
+                                      "repo":  "heavenonearth",
+                                      "repoId":  1144126734,
+                                      "org":  "DuncAIcode",
+                                      "repoOwnerId":  257329709,
+                                      "gitCredentialId":  "cred_0b4cd7867e84fb917e4ca8c70ed3979cb9f576c8",
+                                      "productionBranch":  "main",
+                                      "sourceless":  true,
+                                      "createdAt":  1769600915817,
+                                      "updatedAt":  1769600915817,
+                                      "deployHooks":  [
+
+                                                      ]
+                                  },
+                         "latestDeployments":  [
+                                                   {
+                                                       "alias":  [
+                                                                     "heavenonearth-beta.vercel.app",
+                                                                     "heavenonearth-duncans-projects-eb8b9d58.vercel.app",
+                                                                     "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                 ],
+                                                       "aliasAssigned":  1769606450152,
+                                                       "aliasError":  null,
+                                                       "automaticAliases":  [
+                                                                                "heavenonearth-duncans-projects-eb8b9d58.vercel.app",
+                                                                                "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                            ],
+                                                       "builds":  [
+
+                                                                  ],
+                                                       "createdAt":  1769606421064,
+                                                       "createdIn":  "sfo1",
+                                                       "creator":  {
+                                                                       "uid":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                                       "email":  "djruk101@gmail.com",
+                                                                       "username":  "djruk101-9148",
+                                                                       "githubLogin":  "DuncAIcode"
+                                                                   },
+                                                       "deploymentHostname":  "heavenonearth-84n3reiqc-duncans-projects-eb8b9d58",
+                                                       "forced":  false,
+                                                       "id":  "dpl_3ePFA9jWwBHXCGtUNNoP1gS6BdUQ",
+                                                       "meta":  {
+                                                                    "githubCommitAuthorName":  "DuncAIcode",
+                                                                    "githubCommitAuthorEmail":  "djruk101@gmail.com",
+                                                                    "githubCommitMessage":  "feat: add environment diagnostic test page",
+                                                                    "githubCommitOrg":  "DuncAIcode",
+                                                                    "githubCommitRef":  "main",
+                                                                    "githubCommitRepo":  "heavenonearth",
+                                                                    "githubCommitSha":  "4a214ec3f344daae58bf9c5d59dcbaad971f1c8f",
+                                                                    "githubDeployment":  "1",
+                                                                    "githubOrg":  "DuncAIcode",
+                                                                    "githubRepo":  "heavenonearth",
+                                                                    "githubRepoOwnerType":  "User",
+                                                                    "githubCommitRepoId":  "1144126734",
+                                                                    "githubRepoId":  "1144126734",
+                                                                    "githubRepoVisibility":  "public",
+                                                                    "githubHost":  "github.com",
+                                                                    "githubCommitAuthorLogin":  "DuncAIcode",
+                                                                    "repoPushedAt":  "1769606418000",
+                                                                    "branchAlias":  "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                },
+                                                       "name":  "heavenonearth",
+                                                       "plan":  "hobby",
+                                                       "private":  true,
+                                                       "readyState":  "READY",
+                                                       "readySubstate":  "PROMOTED",
+                                                       "target":  "production",
+                                                       "teamId":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                       "type":  "LAMBDAS",
+                                                       "url":  "heavenonearth-84n3reiqc-duncans-projects-eb8b9d58.vercel.app",
+                                                       "userId":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                       "withCache":  false,
+                                                       "buildingAt":  1769606436453,
+                                                       "readyAt":  1769606449184,
+                                                       "previewCommentsEnabled":  true,
+                                                       "oidcTokenClaims":  {
+                                                                               "sub":  "owner:duncans-projects-eb8b9d58:project:heavenonearth:environment:production",
+                                                                               "iss":  "https://oidc.vercel.com/duncans-projects-eb8b9d58",
+                                                                               "scope":  "owner:duncans-projects-eb8b9d58:project:heavenonearth:environment:production",
+                                                                               "aud":  "https://vercel.com/duncans-projects-eb8b9d58",
+                                                                               "owner":  "duncans-projects-eb8b9d58",
+                                                                               "owner_id":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                                               "project":  "heavenonearth",
+                                                                               "project_id":  "prj_F8n57yXPQfwlLbPnj4yFzcD9NecP",
+                                                                               "environment":  "production",
+                                                                               "plan":  "hobby"
+                                                                           }
+                                                   },
+                                                   {
+                                                       "alias":  [
+                                                                     "heavenonearth-beta.vercel.app",
+                                                                     "heavenonearth-duncans-projects-eb8b9d58.vercel.app",
+                                                                     "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                 ],
+                                                       "aliasAssigned":  1769605748299,
+                                                       "aliasError":  null,
+                                                       "automaticAliases":  [
+                                                                                "heavenonearth-duncans-projects-eb8b9d58.vercel.app",
+                                                                                "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                            ],
+                                                       "builds":  [
+
+                                                                  ],
+                                                       "createdAt":  1769605719401,
+                                                       "createdIn":  "sfo1",
+                                                       "creator":  {
+                                                                       "uid":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                                       "email":  "djruk101@gmail.com",
+                                                                       "username":  "djruk101-9148",
+                                                                       "githubLogin":  "DuncAIcode"
+                                                                   },
+                                                       "deploymentHostname":  "heavenonearth-29dnhed8m-duncans-projects-eb8b9d58",
+                                                       "forced":  false,
+                                                       "id":  "dpl_68Tqqi2cKmWf9dW7LjdARaSThJFa",
+                                                       "meta":  {
+                                                                    "githubCommitAuthorName":  "DuncAIcode",
+                                                                    "githubCommitAuthorEmail":  "djruk101@gmail.com",
+                                                                    "githubCommitMessage":  "fix: add error handling for missing Supabase env vars",
+                                                                    "githubCommitOrg":  "DuncAIcode",
+                                                                    "githubCommitRef":  "main",
+                                                                    "githubCommitRepo":  "heavenonearth",
+                                                                    "githubCommitSha":  "e4e2a9925e7e95abd11a876f365f6c332a84709a",
+                                                                    "githubDeployment":  "1",
+                                                                    "githubOrg":  "DuncAIcode",
+                                                                    "githubRepo":  "heavenonearth",
+                                                                    "githubRepoOwnerType":  "User",
+                                                                    "githubCommitRepoId":  "1144126734",
+                                                                    "githubRepoId":  "1144126734",
+                                                                    "githubRepoVisibility":  "public",
+                                                                    "githubHost":  "github.com",
+                                                                    "githubCommitAuthorLogin":  "DuncAIcode",
+                                                                    "repoPushedAt":  "1769605717000",
+                                                                    "branchAlias":  "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                },
+                                                       "name":  "heavenonearth",
+                                                       "plan":  "hobby",
+                                                       "private":  true,
+                                                       "readyState":  "READY",
+                                                       "readySubstate":  "PROMOTED",
+                                                       "target":  "production",
+                                                       "teamId":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                       "type":  "LAMBDAS",
+                                                       "url":  "heavenonearth-29dnhed8m-duncans-projects-eb8b9d58.vercel.app",
+                                                       "userId":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                       "withCache":  false,
+                                                       "buildingAt":  1769605735950,
+                                                       "readyAt":  1769605748132,
+                                                       "previewCommentsEnabled":  true,
+                                                       "oidcTokenClaims":  {
+                                                                               "sub":  "owner:duncans-projects-eb8b9d58:project:heavenonearth:environment:production",
+                                                                               "iss":  "https://oidc.vercel.com/duncans-projects-eb8b9d58",
+                                                                               "scope":  "owner:duncans-projects-eb8b9d58:project:heavenonearth:environment:production",
+                                                                               "aud":  "https://vercel.com/duncans-projects-eb8b9d58",
+                                                                               "owner":  "duncans-projects-eb8b9d58",
+                                                                               "owner_id":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                                               "project":  "heavenonearth",
+                                                                               "project_id":  "prj_F8n57yXPQfwlLbPnj4yFzcD9NecP",
+                                                                               "environment":  "production",
+                                                                               "plan":  "hobby"
+                                                                           }
+                                                   }
+                                               ],
+                         "targets":  {
+                                         "production":  {
+                                                            "alias":  [
+                                                                          "heavenonearth-beta.vercel.app",
+                                                                          "heavenonearth-duncans-projects-eb8b9d58.vercel.app",
+                                                                          "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                      ],
+                                                            "aliasAssigned":  1769606450152,
+                                                            "aliasError":  null,
+                                                            "automaticAliases":  [
+                                                                                     "heavenonearth-duncans-projects-eb8b9d58.vercel.app",
+                                                                                     "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                                 ],
+                                                            "builds":  [
+
+                                                                       ],
+                                                            "createdAt":  1769606421064,
+                                                            "createdIn":  "sfo1",
+                                                            "creator":  {
+                                                                            "uid":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                                            "email":  "djruk101@gmail.com",
+                                                                            "username":  "djruk101-9148",
+                                                                            "githubLogin":  "DuncAIcode"
+                                                                        },
+                                                            "deploymentHostname":  "heavenonearth-84n3reiqc-duncans-projects-eb8b9d58",
+                                                            "forced":  false,
+                                                            "id":  "dpl_3ePFA9jWwBHXCGtUNNoP1gS6BdUQ",
+                                                            "meta":  {
+                                                                         "githubCommitAuthorName":  "DuncAIcode",
+                                                                         "githubCommitAuthorEmail":  "djruk101@gmail.com",
+                                                                         "githubCommitMessage":  "feat: add environment diagnostic test page",
+                                                                         "githubCommitOrg":  "DuncAIcode",
+                                                                         "githubCommitRef":  "main",
+                                                                         "githubCommitRepo":  "heavenonearth",
+                                                                         "githubCommitSha":  "4a214ec3f344daae58bf9c5d59dcbaad971f1c8f",
+                                                                         "githubDeployment":  "1",
+                                                                         "githubOrg":  "DuncAIcode",
+                                                                         "githubRepo":  "heavenonearth",
+                                                                         "githubRepoOwnerType":  "User",
+                                                                         "githubCommitRepoId":  "1144126734",
+                                                                         "githubRepoId":  "1144126734",
+                                                                         "githubRepoVisibility":  "public",
+                                                                         "githubHost":  "github.com",
+                                                                         "githubCommitAuthorLogin":  "DuncAIcode",
+                                                                         "repoPushedAt":  "1769606418000",
+                                                                         "branchAlias":  "heavenonearth-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                     },
+                                                            "name":  "heavenonearth",
+                                                            "plan":  "hobby",
+                                                            "private":  true,
+                                                            "readyState":  "READY",
+                                                            "readySubstate":  "PROMOTED",
+                                                            "target":  "production",
+                                                            "teamId":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                            "type":  "LAMBDAS",
+                                                            "url":  "heavenonearth-84n3reiqc-duncans-projects-eb8b9d58.vercel.app",
+                                                            "userId":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                            "withCache":  false,
+                                                            "buildingAt":  1769606436453,
+                                                            "readyAt":  1769606449184,
+                                                            "previewCommentsEnabled":  true,
+                                                            "oidcTokenClaims":  {
+                                                                                    "sub":  "owner:duncans-projects-eb8b9d58:project:heavenonearth:environment:production",
+                                                                                    "iss":  "https://oidc.vercel.com/duncans-projects-eb8b9d58",
+                                                                                    "scope":  "owner:duncans-projects-eb8b9d58:project:heavenonearth:environment:production",
+                                                                                    "aud":  "https://vercel.com/duncans-projects-eb8b9d58",
+                                                                                    "owner":  "duncans-projects-eb8b9d58",
+                                                                                    "owner_id":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                                                    "project":  "heavenonearth",
+                                                                                    "project_id":  "prj_F8n57yXPQfwlLbPnj4yFzcD9NecP",
+                                                                                    "environment":  "production",
+                                                                                    "plan":  "hobby"
+                                                                                }
+                                                        }
+                                     },
+                         "deploymentExpiration":  {
+                                                      "expirationDays":  180,
+                                                      "expirationDaysProduction":  365,
+                                                      "expirationDaysCanceled":  30,
+                                                      "expirationDaysErrored":  90,
+                                                      "deploymentsToKeep":  10
+                                                  },
+                         "features":  {
+                                          "webAnalytics":  false
+                                      }
+                     },
+                     {
+                         "accountId":  "team_tGJZuiLfripfM56XEVVjjunI",
+                         "speedInsights":  {
+                                               "id":  "MS5U48qwAceYzDei2QBGbytgAhz",
+                                               "hasData":  false
+                                           },
+                         "autoExposeSystemEnvs":  true,
+                         "autoAssignCustomDomains":  true,
+                         "autoAssignCustomDomainsUpdatedBy":  "system",
+                         "buildCommand":  "cd src \u0026amp;\u0026amp; npm run build",
+                         "createdAt":  1769605179991,
+                         "crons":  {
+                                       "enabledAt":  1769605378318,
+                                       "disabledAt":  null,
+                                       "updatedAt":  1769606434304,
+                                       "deploymentId":  "dpl_2tCJbmdGWEn1wSQyAacL24PGx2MT",
+                                       "definitions":  [
+
+                                                       ]
+                                   },
+                         "devCommand":  null,
+                         "directoryListing":  false,
+                         "env":  [
+                                     {
+                                         "type":  "encrypted",
+                                         "key":  "VITE_SUPABASE_URL",
+                                         "value":  "VUcXQuu4uu10uBs5zcAL1n4frJd+vMEiXEkPD5WHLPU=",
+                                         "target":  [
+                                                        "production",
+                                                        "preview",
+                                                        "development"
+                                                    ],
+                                         "configurationId":  null,
+                                         "createdAt":  1769605179918,
+                                         "updatedAt":  1769605179918,
+                                         "createdBy":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                         "updatedBy":  null,
+                                         "id":  "l7sv67GRPjjJV5A7"
+                                     },
+                                     {
+                                         "type":  "encrypted",
+                                         "key":  "VITE_SUPABASE_ANON_KEY",
+                                         "value":  "uNucl3ENyXmsdhgV6j1i4Wvz43y7KO+7elV7oH+UKcg=",
+                                         "target":  [
+                                                        "production",
+                                                        "preview",
+                                                        "development"
+                                                    ],
+                                         "configurationId":  null,
+                                         "createdAt":  1769605179918,
+                                         "updatedAt":  1769605179918,
+                                         "createdBy":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                         "updatedBy":  null,
+                                         "id":  "RvaZro4dlmNFfrz8"
+                                     }
+                                 ],
+                         "framework":  "vite",
+                         "gitForkProtection":  true,
+                         "gitLFS":  false,
+                         "id":  "prj_MEvEqxrjj1adrIIUyKtd3Y3tK8iE",
+                         "installCommand":  "cd src \u0026amp;\u0026amp; npm install",
+                         "lastRollbackTarget":  null,
+                         "lastAliasRequest":  null,
+                         "name":  "heavenonearth1",
+                         "nodeVersion":  "24.x",
+                         "outputDirectory":  "src/dist",
+                         "productionDeploymentsFastLane":  true,
+                         "publicSource":  null,
+                         "defaultResourceConfig":  {
+                                                       "fluid":  true,
+                                                       "functionDefaultRegions":  [
+                                                                                      "iad1"
+                                                                                  ],
+                                                       "functionDefaultTimeout":  300,
+                                                       "functionDefaultMemoryType":  "standard",
+                                                       "functionZeroConfigFailover":  false,
+                                                       "elasticConcurrencyEnabled":  false
+                                                   },
+                         "resourceConfig":  {
+                                                "fluid":  true,
+                                                "functionDefaultRegions":  [
+                                                                               "iad1"
+                                                                           ]
+                                            },
+                         "rootDirectory":  null,
+                         "serverlessFunctionRegion":  "iad1",
+                         "sourceFilesOutsideRootDirectory":  true,
+                         "ssoProtection":  {
+                                               "deploymentType":  "all_except_custom_domains"
+                                           },
+                         "updatedAt":  1769606434304,
+                         "live":  false,
+                         "gitComments":  {
+                                             "onCommit":  false,
+                                             "onPullRequest":  true
+                                         },
+                         "gitProviderOptions":  {
+                                                    "createDeployments":  "enabled"
+                                                },
+                         "webAnalytics":  {
+                                              "id":  "qxxlEjRBbA1O4WMxJEHHMtmA6"
+                                          },
+                         "oidcTokenConfig":  {
+                                                 "enabled":  true,
+                                                 "issuerMode":  "team"
+                                             },
+                         "hasDeployments":  true,
+                         "link":  {
+                                      "type":  "github",
+                                      "repo":  "heavenonearth",
+                                      "repoId":  1144126734,
+                                      "org":  "DuncAIcode",
+                                      "repoOwnerId":  257329709,
+                                      "gitCredentialId":  "cred_0b4cd7867e84fb917e4ca8c70ed3979cb9f576c8",
+                                      "productionBranch":  "main",
+                                      "sourceless":  true,
+                                      "createdAt":  1769605179915,
+                                      "updatedAt":  1769605179915,
+                                      "deployHooks":  [
+
+                                                      ]
+                                  },
+                         "latestDeployments":  [
+                                                   {
+                                                       "alias":  [
+                                                                     "heavenonearth1.vercel.app",
+                                                                     "heavenonearth1-duncans-projects-eb8b9d58.vercel.app",
+                                                                     "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                 ],
+                                                       "aliasAssigned":  1769606434193,
+                                                       "aliasError":  null,
+                                                       "automaticAliases":  [
+                                                                                "heavenonearth1-duncans-projects-eb8b9d58.vercel.app",
+                                                                                "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                            ],
+                                                       "builds":  [
+
+                                                                  ],
+                                                       "createdAt":  1769606421082,
+                                                       "createdIn":  "sfo1",
+                                                       "creator":  {
+                                                                       "uid":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                                       "email":  "djruk101@gmail.com",
+                                                                       "username":  "djruk101-9148",
+                                                                       "githubLogin":  "DuncAIcode"
+                                                                   },
+                                                       "deploymentHostname":  "heavenonearth1-6tke66h1r-duncans-projects-eb8b9d58",
+                                                       "forced":  false,
+                                                       "id":  "dpl_2tCJbmdGWEn1wSQyAacL24PGx2MT",
+                                                       "meta":  {
+                                                                    "githubCommitAuthorName":  "DuncAIcode",
+                                                                    "githubCommitAuthorEmail":  "djruk101@gmail.com",
+                                                                    "githubCommitMessage":  "feat: add environment diagnostic test page",
+                                                                    "githubCommitOrg":  "DuncAIcode",
+                                                                    "githubCommitRef":  "main",
+                                                                    "githubCommitRepo":  "heavenonearth",
+                                                                    "githubCommitSha":  "4a214ec3f344daae58bf9c5d59dcbaad971f1c8f",
+                                                                    "githubDeployment":  "1",
+                                                                    "githubOrg":  "DuncAIcode",
+                                                                    "githubRepo":  "heavenonearth",
+                                                                    "githubRepoOwnerType":  "User",
+                                                                    "githubCommitRepoId":  "1144126734",
+                                                                    "githubRepoId":  "1144126734",
+                                                                    "githubRepoVisibility":  "public",
+                                                                    "githubHost":  "github.com",
+                                                                    "githubCommitAuthorLogin":  "DuncAIcode",
+                                                                    "repoPushedAt":  "1769606418000",
+                                                                    "branchAlias":  "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                },
+                                                       "name":  "heavenonearth1",
+                                                       "plan":  "hobby",
+                                                       "private":  true,
+                                                       "readyState":  "READY",
+                                                       "readySubstate":  "PROMOTED",
+                                                       "target":  "production",
+                                                       "teamId":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                       "type":  "LAMBDAS",
+                                                       "url":  "heavenonearth1-6tke66h1r-duncans-projects-eb8b9d58.vercel.app",
+                                                       "userId":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                       "withCache":  false,
+                                                       "buildingAt":  1769606422465,
+                                                       "readyAt":  1769606434027,
+                                                       "previewCommentsEnabled":  true,
+                                                       "oidcTokenClaims":  {
+                                                                               "sub":  "owner:duncans-projects-eb8b9d58:project:heavenonearth1:environment:production",
+                                                                               "iss":  "https://oidc.vercel.com/duncans-projects-eb8b9d58",
+                                                                               "scope":  "owner:duncans-projects-eb8b9d58:project:heavenonearth1:environment:production",
+                                                                               "aud":  "https://vercel.com/duncans-projects-eb8b9d58",
+                                                                               "owner":  "duncans-projects-eb8b9d58",
+                                                                               "owner_id":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                                               "project":  "heavenonearth1",
+                                                                               "project_id":  "prj_MEvEqxrjj1adrIIUyKtd3Y3tK8iE",
+                                                                               "environment":  "production",
+                                                                               "plan":  "hobby"
+                                                                           }
+                                                   },
+                                                   {
+                                                       "alias":  [
+                                                                     "heavenonearth1.vercel.app",
+                                                                     "heavenonearth1-duncans-projects-eb8b9d58.vercel.app",
+                                                                     "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                 ],
+                                                       "aliasAssigned":  1769606262919,
+                                                       "aliasError":  null,
+                                                       "automaticAliases":  [
+                                                                                "heavenonearth1-duncans-projects-eb8b9d58.vercel.app",
+                                                                                "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                            ],
+                                                       "builds":  [
+
+                                                                  ],
+                                                       "createdAt":  1769606244609,
+                                                       "createdIn":  "sfo1",
+                                                       "creator":  {
+                                                                       "uid":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                                       "email":  "djruk101@gmail.com",
+                                                                       "username":  "djruk101-9148",
+                                                                       "githubLogin":  "DuncAIcode"
+                                                                   },
+                                                       "deploymentHostname":  "heavenonearth1-jjutm6i3t-duncans-projects-eb8b9d58",
+                                                       "forced":  true,
+                                                       "id":  "dpl_HzMgEYNSX7a52CN4dcP2WrAieU1o",
+                                                       "meta":  {
+                                                                    "githubCommitAuthorName":  "DuncAIcode",
+                                                                    "githubCommitAuthorEmail":  "djruk101@gmail.com",
+                                                                    "githubCommitMessage":  "fix: add error handling for missing Supabase env vars",
+                                                                    "githubCommitOrg":  "DuncAIcode",
+                                                                    "githubCommitRef":  "main",
+                                                                    "githubCommitRepo":  "heavenonearth",
+                                                                    "githubCommitSha":  "e4e2a9925e7e95abd11a876f365f6c332a84709a",
+                                                                    "githubDeployment":  "1",
+                                                                    "githubOrg":  "DuncAIcode",
+                                                                    "githubRepo":  "heavenonearth",
+                                                                    "githubRepoOwnerType":  "User",
+                                                                    "githubCommitRepoId":  "1144126734",
+                                                                    "githubRepoId":  "1144126734",
+                                                                    "githubRepoVisibility":  "public",
+                                                                    "githubHost":  "github.com",
+                                                                    "githubCommitAuthorLogin":  "DuncAIcode",
+                                                                    "repoPushedAt":  "1769605717000",
+                                                                    "branchAlias":  "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app",
+                                                                    "action":  "redeploy",
+                                                                    "originalDeploymentId":  "dpl_7o5ZYkqXbhH2tgWenufWg9RURWLe"
+                                                                },
+                                                       "name":  "heavenonearth1",
+                                                       "plan":  "hobby",
+                                                       "private":  true,
+                                                       "readyState":  "READY",
+                                                       "readySubstate":  "PROMOTED",
+                                                       "target":  "production",
+                                                       "teamId":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                       "type":  "LAMBDAS",
+                                                       "url":  "heavenonearth1-jjutm6i3t-duncans-projects-eb8b9d58.vercel.app",
+                                                       "userId":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                       "withCache":  false,
+                                                       "buildingAt":  1769606246831,
+                                                       "readyAt":  1769606262764,
+                                                       "previewCommentsEnabled":  true,
+                                                       "oidcTokenClaims":  {
+                                                                               "sub":  "owner:duncans-projects-eb8b9d58:project:heavenonearth1:environment:production",
+                                                                               "iss":  "https://oidc.vercel.com/duncans-projects-eb8b9d58",
+                                                                               "scope":  "owner:duncans-projects-eb8b9d58:project:heavenonearth1:environment:production",
+                                                                               "aud":  "https://vercel.com/duncans-projects-eb8b9d58",
+                                                                               "owner":  "duncans-projects-eb8b9d58",
+                                                                               "owner_id":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                                               "project":  "heavenonearth1",
+                                                                               "project_id":  "prj_MEvEqxrjj1adrIIUyKtd3Y3tK8iE",
+                                                                               "environment":  "production",
+                                                                               "plan":  "hobby"
+                                                                           }
+                                                   }
+                                               ],
+                         "targets":  {
+                                         "production":  {
+                                                            "alias":  [
+                                                                          "heavenonearth1.vercel.app",
+                                                                          "heavenonearth1-duncans-projects-eb8b9d58.vercel.app",
+                                                                          "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                      ],
+                                                            "aliasAssigned":  1769606434193,
+                                                            "aliasError":  null,
+                                                            "automaticAliases":  [
+                                                                                     "heavenonearth1-duncans-projects-eb8b9d58.vercel.app",
+                                                                                     "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                                 ],
+                                                            "builds":  [
+
+                                                                       ],
+                                                            "createdAt":  1769606421082,
+                                                            "createdIn":  "sfo1",
+                                                            "creator":  {
+                                                                            "uid":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                                            "email":  "djruk101@gmail.com",
+                                                                            "username":  "djruk101-9148",
+                                                                            "githubLogin":  "DuncAIcode"
+                                                                        },
+                                                            "deploymentHostname":  "heavenonearth1-6tke66h1r-duncans-projects-eb8b9d58",
+                                                            "forced":  false,
+                                                            "id":  "dpl_2tCJbmdGWEn1wSQyAacL24PGx2MT",
+                                                            "meta":  {
+                                                                         "githubCommitAuthorName":  "DuncAIcode",
+                                                                         "githubCommitAuthorEmail":  "djruk101@gmail.com",
+                                                                         "githubCommitMessage":  "feat: add environment diagnostic test page",
+                                                                         "githubCommitOrg":  "DuncAIcode",
+                                                                         "githubCommitRef":  "main",
+                                                                         "githubCommitRepo":  "heavenonearth",
+                                                                         "githubCommitSha":  "4a214ec3f344daae58bf9c5d59dcbaad971f1c8f",
+                                                                         "githubDeployment":  "1",
+                                                                         "githubOrg":  "DuncAIcode",
+                                                                         "githubRepo":  "heavenonearth",
+                                                                         "githubRepoOwnerType":  "User",
+                                                                         "githubCommitRepoId":  "1144126734",
+                                                                         "githubRepoId":  "1144126734",
+                                                                         "githubRepoVisibility":  "public",
+                                                                         "githubHost":  "github.com",
+                                                                         "githubCommitAuthorLogin":  "DuncAIcode",
+                                                                         "repoPushedAt":  "1769606418000",
+                                                                         "branchAlias":  "heavenonearth1-git-main-duncans-projects-eb8b9d58.vercel.app"
+                                                                     },
+                                                            "name":  "heavenonearth1",
+                                                            "plan":  "hobby",
+                                                            "private":  true,
+                                                            "readyState":  "READY",
+                                                            "readySubstate":  "PROMOTED",
+                                                            "target":  "production",
+                                                            "teamId":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                            "type":  "LAMBDAS",
+                                                            "url":  "heavenonearth1-6tke66h1r-duncans-projects-eb8b9d58.vercel.app",
+                                                            "userId":  "dTBexNOvSIwMgkGOVZaL91SZ",
+                                                            "withCache":  false,
+                                                            "buildingAt":  1769606422465,
+                                                            "readyAt":  1769606434027,
+                                                            "previewCommentsEnabled":  true,
+                                                            "oidcTokenClaims":  {
+                                                                                    "sub":  "owner:duncans-projects-eb8b9d58:project:heavenonearth1:environment:production",
+                                                                                    "iss":  "https://oidc.vercel.com/duncans-projects-eb8b9d58",
+                                                                                    "scope":  "owner:duncans-projects-eb8b9d58:project:heavenonearth1:environment:production",
+                                                                                    "aud":  "https://vercel.com/duncans-projects-eb8b9d58",
+                                                                                    "owner":  "duncans-projects-eb8b9d58",
+                                                                                    "owner_id":  "team_tGJZuiLfripfM56XEVVjjunI",
+                                                                                    "project":  "heavenonearth1",
+                                                                                    "project_id":  "prj_MEvEqxrjj1adrIIUyKtd3Y3tK8iE",
+                                                                                    "environment":  "production",
+                                                                                    "plan":  "hobby"
+                                                                                }
+                                                        }
+                                     },
+                         "deploymentExpiration":  {
+                                                      "expirationDays":  180,
+                                                      "expirationDaysProduction":  365,
+                                                      "expirationDaysCanceled":  30,
+                                                      "expirationDaysErrored":  90,
+                                                      "deploymentsToKeep":  10
+                                                  },
+                         "features":  {
+                                          "webAnalytics":  false
+                                      }
+                     }
+                 ],
+    "pagination":  {
+                       "count":  2,
+                       "next":  null,
+                       "prev":  1769606450247
+                   }
+}
