@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap, ZoomControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { ArrowRight } from 'lucide-react';
@@ -57,30 +57,20 @@ const PropertyMap = ({ properties, onSelectProperty, onViewList }) => {
 
     return (
         <div className="h-[700px] rounded-[3rem] overflow-hidden border border-heaven-emerald/20 shadow-2xl relative z-0">
-            {/* Debug Overlay - Temporary for troubleshooting */}
-            <div className="absolute top-20 right-6 z-[1000] pointer-events-none bg-black/80 text-green-400 p-4 rounded-xl text-xs font-mono max-w-xs pointer-events-auto">
-                <p><strong>Debugging Status:</strong></p>
-                <p>Total Props: {properties.length}</p>
-                <p>Valid Coords: {validProperties.length}</p>
-                {validProperties.length > 0 && (
-                    <div className="mt-2 text-[10px] opacity-75">
-                        <p>Sample: {validProperties[0].title}</p>
-                        <p>Loc: {validProperties[0].latitude.toFixed(4)}, {validProperties[0].longitude.toFixed(4)}</p>
-                    </div>
-                )}
-            </div>
-
             <MapContainer
                 center={defaultCenter}
                 zoom={8}
                 style={{ height: '100%', width: '100%', borderRadius: '3rem' }}
                 scrollWheelZoom={false}
+                zoomControl={false}
                 className="z-0"
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
                     url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
                 />
+
+                <ZoomControl position="topright" />
 
                 <FitBounds markers={validProperties} />
 
