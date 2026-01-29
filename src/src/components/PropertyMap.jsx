@@ -4,15 +4,13 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { ArrowRight } from 'lucide-react';
 
-// Fix Leaflet Default Icon
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
-import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+// Fix Leaflet Default Icon - Use CDN for reliability in all build environments
+import L from 'leaflet';
 
 const customIcon = new L.Icon({
-    iconUrl: iconUrl,
-    iconRetinaUrl: iconRetinaUrl,
-    shadowUrl: shadowUrl,
+    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+    iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
@@ -34,6 +32,19 @@ const PropertyMap = ({ properties, onSelectProperty, onViewList }) => {
     // Default Center (Costa Rica)
     const defaultCenter = [9.7489, -83.7534];
 
+    console.log("PropertyMap received properties:", properties);
+
+    const validProperties = properties.filter(p => {
+        const hasCoords = p.latitude && p.longitude;
+        if (!hasCoords) {
+            // verbose check to help debugging
+            // console.log(`Property ${p.title} missing coords:`, p.latitude, p.longitude);
+        }
+        return hasCoords;
+    });
+
+    console.log("Properties with coordinates:", validProperties.length);
+
     return (
         <div className="h-[700px] rounded-[3rem] overflow-hidden border border-heaven-emerald/20 shadow-2xl relative z-0">
             <MapContainer
@@ -48,46 +59,54 @@ const PropertyMap = ({ properties, onSelectProperty, onViewList }) => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                {properties.filter(p => p.latitude && p.longitude).map(property => (
-                    <Marker
-                        key={property.id}
-                        position={[property.latitude, property.longitude]}
-                        icon={customIcon}
-                        eventHandlers={{
-                            click: () => {
-                                // Optional: auto-select on click if desired, 
-                                // currently handled by popup interaction
-                            },
-                        }}
-                    >
-                        <Popup className="heaven-popup">
-                            <div className="text-heaven-dark min-w-[200px]">
-                                <h3 className="font-serif font-bold text-lg mb-1">{property.title}</h3>
-                                <p className="text-xs uppercase tracking-widest text-heaven-emerald mb-2 font-bold">{property.price}</p>
-                                <img src={property.image_url} alt={property.title} className="w-full h-24 object-cover rounded-lg mb-3" />
+                {validProperties.map(property => {
+                    const lat = parseFloat(property.latitude);
+                    const lng = parseFloat(property.longitude);
 
-                                <div className="flex flex-col gap-2">
-                                    <button
-                                        onClick={() => onSelectProperty(property)}
-                                        className="w-full py-2 bg-heaven-emerald text-white text-[10px] font-bold uppercase tracking-widest rounded-lg hover:bg-heaven-emerald/80"
-                                    >
-                                        View Details
-                                    </button>
-                                    {property.source_url && (
-                                        <a
-                                            href={property.source_url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="block w-full py-2 text-center bg-gray-100 text-gray-600 text-[10px] font-bold uppercase tracking-widest rounded-lg hover:bg-gray-200"
+                    // Double check valid numbers
+                    if (isNaN(lat) || isNaN(lng)) return null;
+
+                    return (
+                        <Marker
+                            key={property.id}
+                            position={[lat, lng]}
+                            icon={customIcon}
+                            eventHandlers={{
+                                click: () => {
+                                    // Optional: auto-select on click if desired, 
+                                    // currently handled by popup interaction
+                                },
+                            }}
+                        >
+                            <Popup className="heaven-popup">
+                                <div className="text-heaven-dark min-w-[200px]">
+                                    <h3 className="font-serif font-bold text-lg mb-1">{property.title}</h3>
+                                    <p className="text-xs uppercase tracking-widest text-heaven-emerald mb-2 font-bold">{property.price}</p>
+                                    <img src={property.image_url} alt={property.title} className="w-full h-24 object-cover rounded-lg mb-3" />
+
+                                    <div className="flex flex-col gap-2">
+                                        <button
+                                            onClick={() => onSelectProperty(property)}
+                                            className="w-full py-2 bg-heaven-emerald text-white text-[10px] font-bold uppercase tracking-widest rounded-lg hover:bg-heaven-emerald/80"
                                         >
-                                            Original Listing
-                                        </a>
-                                    )}
+                                            View Details
+                                        </button>
+                                        {property.source_url && (
+                                            <a
+                                                href={property.source_url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="block w-full py-2 text-center bg-gray-100 text-gray-600 text-[10px] font-bold uppercase tracking-widest rounded-lg hover:bg-gray-200"
+                                            >
+                                                Original Listing
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        </Popup>
-                    </Marker>
-                ))}
+                            </Popup>
+                        </Marker>
+                    );
+                })}
             </MapContainer>
 
             {/* Map Overlay Controls */}
