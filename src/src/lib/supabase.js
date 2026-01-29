@@ -16,13 +16,7 @@ const isValidUrl = (url) => {
 let client = null;
 
 if (!supabaseUrl || !supabaseAnonKey || !isValidUrl(supabaseUrl)) {
-  console.error('⚠️ Supabase configuration is missing or invalid.');
-  console.log('Diagnostic Info:', {
-    hasUrl: !!supabaseUrl,
-    hasKey: !!supabaseAnonKey,
-    isValidUrl: isValidUrl(supabaseUrl),
-    urlStart: supabaseUrl ? String(supabaseUrl).substring(0, 10) : 'none'
-  });
+  console.error('⚠️ Supabase configuration is missing or invalid. Please check Vercel environment variables.');
 } else {
   try {
     client = createClient(supabaseUrl, supabaseAnonKey);
