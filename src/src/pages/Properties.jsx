@@ -245,6 +245,24 @@ const Properties = () => {
                                         ))}
                                     </div>
 
+                                    {/* Gallery Section */}
+                                    {selectedProperty.images && selectedProperty.images.length > 0 && (
+                                        <div className="mb-12">
+                                            <h3 className="text-heaven-emerald text-xs font-bold uppercase tracking-widest mb-6 border-b border-white/10 pb-2">Sanctuary Gallery</h3>
+                                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                                                {selectedProperty.images.map((img, idx) => (
+                                                    <div key={idx} className="aspect-square rounded-2xl overflow-hidden border border-white/10 hover:border-heaven-emerald/50 transition-colors group cursor-pointer">
+                                                        <img
+                                                            src={img}
+                                                            alt={`${selectedProperty.title} gallery ${idx + 1}`}
+                                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
                                     <div className="flex flex-col gap-3">
                                         <button className="w-full py-4 bg-heaven-emerald text-heaven-dark font-bold uppercase tracking-[0.3em] text-xs rounded-2xl shadow-xl shadow-heaven-emerald/20 hover:scale-[1.02] transition-transform active:scale-95">
                                             Inquire for Passage
