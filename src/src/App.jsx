@@ -83,7 +83,7 @@ function App() {
 
   const ADMIN_EMAILS = [
     'db4sail@yahoo.co.uk',
-    'jessicaberstedt@icloud.com'
+    'jessicabergerstedt@icloud.com'
   ];
 
   const isAdmin = session?.user?.email && ADMIN_EMAILS.includes(session.user.email);
