@@ -1,0 +1,23 @@
+﻿[
+{"type":"stdout","created":1769692633935,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Running build in Washington, D.C., USA (East) ΓÇô iad1","id":"1769692633935877389608800000","date":1769692633935,"serial":"1769692633935877389608800000"}}
+,
+{"type":"stdout","created":1769692633936,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Build machine configuration: 2 cores, 8 GB","id":"1769692633936877389608800000","date":1769692633936,"serial":"1769692633936877389608800000"}}
+,
+{"type":"stdout","created":1769692634255,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Cloning github.com/AbhinavSdr/IDK123 (Branch: main, Commit: f25d704)","id":"1769692634255877389608800000","date":1769692634255,"serial":"1769692634255877389608800000"}}
+,
+{"type":"stdout","created":1769692634255,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Previous build caches not available.","id":"1769692634255877389608800002","date":1769692634255,"serial":"1769692634255877389608800002"}}
+,
+{"type":"stdout","created":1769692637188,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Cloning completed: 2.933s","id":"1769692637188877389608800000","date":1769692637188,"serial":"1769692637188877389608800000"}}
+,
+{"type":"stdout","created":1769692637987,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Running \"vercel build\"","id":"1769692637987693730204500000","date":1769692637987,"serial":"1769692637987693730204500000"}}
+,
+{"type":"stderr","created":1769692640161,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Vercel CLI 50.5.2","id":"1769692640161693730204500000","date":1769692640161,"serial":"1769692640161693730204500000"}}
+,
+{"type":"stdout","created":1769692641162,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Running \"install\" command: `cd src &amp;&amp; npm install`...","id":"1769692641162693730204500000","date":1769692641162,"serial":"1769692641162693730204500000"}}
+,
+{"type":"stderr","created":1769692641168,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"sh: -c: line 1: syntax error near unexpected token `;&'","id":"1769692641168693730204500000","date":1769692641168,"serial":"1769692641168693730204500000"}}
+,
+{"type":"stderr","created":1769692641168,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"sh: -c: line 1: `cd src &amp;&amp; npm install'","id":"1769692641168693730204500001","date":1769692641168,"serial":"1769692641168693730204500001"}}
+,
+{"type":"stderr","created":1769692641172,"payload":{"deploymentId":"dpl_Fgn2tbYV72gEK7xS1gYB2Ajw8cvf","info":{"type":"build","name":"bld_gs2oveg8x","entrypoint":"."},"text":"Error: Command \"cd src &amp;&amp; npm install\" exited with 2","id":"1769692641172693730204500000","date":1769692641172,"serial":"1769692641172693730204500000"}}
+]
