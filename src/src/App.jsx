@@ -27,6 +27,12 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!supabase) {
+      setError('Supabase connection failed. Please check if VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set correctly in Vercel settings.');
+      setLoading(false);
+      return;
+    }
+
     try {
       // Check active sessions and subscribe to changes
       supabase.auth.getSession().then(({ data: { session } }) => {

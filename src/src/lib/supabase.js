@@ -13,19 +13,24 @@ const isValidUrl = (url) => {
   }
 };
 
+let client = null;
+
 if (!supabaseUrl || !supabaseAnonKey || !isValidUrl(supabaseUrl)) {
-  const errorMsg = `Supabase configuration error: 
-    - URL exists: ${!!supabaseUrl}
-    - Key exists: ${!!supabaseAnonKey}
-    - URL is valid: ${isValidUrl(supabaseUrl)}
-    - Received URL value: "${String(supabaseUrl).substring(0, 10)}..."
-  `.trim();
-
-  console.error('❌ ' + errorMsg);
-
-  // Create a dummy client or throw to be caught by App.jsx
-  throw new Error(errorMsg);
+  console.error('⚠️ Supabase configuration is missing or invalid.');
+  console.log('Diagnostic Info:', {
+    hasUrl: !!supabaseUrl,
+    hasKey: !!supabaseAnonKey,
+    isValidUrl: isValidUrl(supabaseUrl),
+    urlStart: supabaseUrl ? String(supabaseUrl).substring(0, 10) : 'none'
+  });
+} else {
+  try {
+    client = createClient(supabaseUrl, supabaseAnonKey);
+  } catch (e) {
+    console.error('❌ Failed to create Supabase client:', e);
+  }
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = client;
+
 
