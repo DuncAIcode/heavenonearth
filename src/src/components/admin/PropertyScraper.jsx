@@ -23,25 +23,68 @@ const PropertyScraper = ({ onManifest }) => {
             return;
         }
 
+        const apiKey = import.meta.env.VITE_FIRECRAWL_API_KEY;
+        if (!apiKey) {
+            setStatus({ type: 'error', message: 'Configuration Error: VITE_FIRECRAWL_API_KEY is missing. Please check .env.local' });
+            return;
+        }
+
         setIsScraping(true);
-        setStatus({ type: 'process', message: 'Consulting the digital archives...' });
+        setStatus({ type: 'process', message: 'Consulting the Firecrawl digital archives...' });
 
         try {
-            // In a real implementation, this might call a serverless function that uses Puppeteer/Cheerio
-            // For now, we simulate the extraction of "raw" data
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const response = await fetch('https://api.firecrawl.dev/v1/scrape', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    url: url,
+                    formats: ['extract'],
+                    extract: {
+                        prompt: "Extract the property title, price, location, description, key features (as a list), and the main image URL.",
+                        schema: {
+                            type: "object",
+                            properties: {
+                                title: { type: "string" },
+                                price: { type: "string" },
+                                location: { type: "string" },
+                                description: { type: "string" },
+                                features: { type: "array", items: { type: "string" } },
+                                image_url: { type: "string" }
+                            },
+                            required: ["title", "description"]
+                        }
+                    }
+                })
+            });
 
-            const mockRawData = {
-                original_title: "Luxurious Jungle Villa with Infinity Pool",
-                original_description: "Beautiful 3-bedroom villa located in the heart of the rainforest. Features include a private infinity pool, solar panels, and proximity to local hiking trails. High ROI potential for rentals.",
-                price: "$850,000",
-                location: "Uvita, Costa Rica",
-                image_url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1350&q=80",
-                features: ["3 Bedrooms", "4 Bathrooms", "Pool", "Solar Ready"]
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || `Firecrawl API Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (!data.data || !data.data.extract) {
+                throw new Error("No extracted data returned from Firecrawl.");
+            }
+
+            const extracted = data.data.extract;
+
+            // Map extracted fields to our internal format
+            const mappedData = {
+                original_title: extracted.title || "Untitled Property",
+                original_description: extracted.description || "No description available.",
+                price: extracted.price || "Price on Request",
+                location: extracted.location || "Unknown Location",
+                image_url: extracted.image_url || "https://placedog.net/800/600?random", // Fallback image
+                features: extracted.features || []
             };
 
-            setScrapedData(mockRawData);
-            setStatus({ type: 'success', message: 'Raw data captured. Now, let us align it with the Sanctuary.' });
+            setScrapedData(mappedData);
+            setStatus({ type: 'success', message: 'Raw data captured via Firecrawl. Align with Sanctuary to refine.' });
         } catch (error) {
             setStatus({ type: 'error', message: `The extraction ritual failed: ${error.message}` });
         } finally {
