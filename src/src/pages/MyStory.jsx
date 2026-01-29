@@ -29,6 +29,25 @@ const MyStory = () => {
                     </Link>
                 </motion.div>
 
+                {/* Portrait Image Overlay */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="absolute top-24 right-6 w-40 h-40 md:w-56 md:h-56 z-20 hidden md:block"
+                >
+                    <div className="relative w-full h-full">
+                        <div className="absolute inset-0 bg-heaven-emerald/10 blur-3xl rounded-full" />
+                        <img
+                            src="/jessica.jpg"
+                            alt="Jessica"
+                            className="relative w-full h-full object-cover rounded-2xl border border-heaven-emerald/20 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                        />
+                        <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b border-l border-heaven-emerald/30" />
+                        <div className="absolute -top-3 -right-3 w-16 h-16 border-t border-r border-heaven-emerald/30" />
+                    </div>
+                </motion.div>
+
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
