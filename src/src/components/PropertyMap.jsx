@@ -32,7 +32,10 @@ const customIcon = new L.Icon({
 const FitBounds = ({ markers }) => {
     const map = useMap();
     useEffect(() => {
-        if (markers.length > 0) {
+        if (markers.length === 1) {
+            // If only one marker, center directly with a reasonable zoom
+            map.setView([markers[0].latitude, markers[0].longitude], 14);
+        } else if (markers.length > 1) {
             const bounds = new L.LatLngBounds(markers.map(m => [m.latitude, m.longitude]));
             map.fitBounds(bounds, { padding: [50, 50] });
         }
