@@ -43,7 +43,7 @@ const PropertyScraper = ({ onManifest }) => {
                     url: url,
                     formats: ['extract'],
                     extract: {
-                        prompt: "Extract the property title, price, location (city/area), description, key features (as a list), main image URL, a list of additional image URLs (gallery), and the source URL. Also, try to identify the latitude and longitude of the property or the general area.",
+                        prompt: "Extract the property title, price, location (city/area), description, key features (as a list), main image URL, and a list of additional image URLs (gallery). IMPORTANT: For images, look for 'og:image' or 'twitter:image' meta tags if a main image is not obvious. Also check for 'background-image' styles on hero sections or sliders. If you find a slider/carousel, extract all high-quality image URLs from it. Also extract the source URL and try to identify latitude/longitude.",
                         schema: {
                             type: "object",
                             properties: {
@@ -54,6 +54,7 @@ const PropertyScraper = ({ onManifest }) => {
                                 features: { type: "array", items: { type: "string" } },
                                 image_url: { type: "string" },
                                 images: { type: "array", items: { type: "string" } },
+                                meta_image: { type: "string" },
                                 source_url: { type: "string" },
                                 latitude: { type: "number" },
                                 longitude: { type: "number" }
@@ -78,13 +79,22 @@ const PropertyScraper = ({ onManifest }) => {
             const extracted = data.data.extract;
 
             // Map extracted fields to our internal format
+            // Prioritize main extracted image, then meta image, then fallback
+            const mainImage = extracted.image_url || extracted.meta_image || "https://placedog.net/800/600?random";
+
+            // Ensure main image is in the gallery if not already present
+            let galleryImages = extracted.images || [];
+            if (mainImage && !mainImage.includes('placedog') && !galleryImages.includes(mainImage)) {
+                galleryImages = [mainImage, ...galleryImages];
+            }
+
             const mappedData = {
                 original_title: extracted.title || "Untitled Property",
                 original_description: extracted.description || "No description available.",
                 price: extracted.price || "Price on Request",
                 location: extracted.location || "Unknown Location",
-                image_url: extracted.image_url || "https://placedog.net/800/600?random", // Fallback image
-                images: extracted.images || [],
+                image_url: mainImage,
+                images: galleryImages,
                 features: extracted.features || [],
                 source_url: extracted.source_url || url, // Use extracted or fallback to input URL
                 latitude: extracted.latitude || null,
