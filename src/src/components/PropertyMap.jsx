@@ -5,7 +5,6 @@ import L from 'leaflet';
 import { ArrowRight } from 'lucide-react';
 
 // Fix Leaflet Default Icon - Use CDN for reliability in all build environments
-import L from 'leaflet';
 
 const customIcon = new L.Icon({
     iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
