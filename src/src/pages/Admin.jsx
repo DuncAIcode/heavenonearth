@@ -202,13 +202,23 @@ const Admin = () => {
                         </div>
                     </div>
 
-                    <button
-                        onClick={() => navigate('/admin/manage')}
-                        className="group flex items-center gap-3 px-6 py-3 bg-heaven-dark/40 border border-heaven-emerald/20 rounded-xl hover:border-heaven-emerald transition-all duration-300 backdrop-blur-md hover:bg-heaven-emerald/5"
-                    >
-                        <ImageIcon className="text-heaven-emerald/60 group-hover:text-heaven-emerald" size={20} />
-                        <span className="text-xs uppercase tracking-widest font-bold text-heaven-starlight group-hover:text-heaven-emerald">Manage Posts</span>
-                    </button>
+                    <div className="flex items-center gap-4">
+                        <button
+                            onClick={() => navigate('/admin/manage')}
+                            className="group flex items-center gap-3 px-6 py-3 bg-heaven-dark/40 border border-heaven-emerald/20 rounded-xl hover:border-heaven-emerald transition-all duration-300 backdrop-blur-md hover:bg-heaven-emerald/5"
+                        >
+                            <ImageIcon className="text-heaven-emerald/60 group-hover:text-heaven-emerald" size={20} />
+                            <span className="text-xs uppercase tracking-widest font-bold text-heaven-starlight group-hover:text-heaven-emerald">Manage Posts</span>
+                        </button>
+
+                        <button
+                            onClick={() => navigate('/admin/properties')}
+                            className="group flex items-center gap-3 px-6 py-3 bg-heaven-dark/40 border border-heaven-emerald/20 rounded-xl hover:border-heaven-emerald transition-all duration-300 backdrop-blur-md hover:bg-heaven-emerald/5"
+                        >
+                            <Home className="text-heaven-emerald/60 group-hover:text-heaven-emerald" size={20} />
+                            <span className="text-xs uppercase tracking-widest font-bold text-heaven-starlight group-hover:text-heaven-emerald">Manage Properties</span>
+                        </button>
+                    </div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">

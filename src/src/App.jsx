@@ -11,6 +11,7 @@ import EcoConsciousness from './pages/EcoConsciousness';
 import Community from './pages/Community';
 import Admin from './pages/Admin';
 import ManagePosts from './pages/ManagePosts';
+import ManageProperties from './pages/ManageProperties';
 import MyStory from './pages/MyStory';
 import Why from './pages/Why';
 import Future from './pages/Future';
@@ -80,6 +81,13 @@ function App() {
     );
   }
 
+  const ADMIN_EMAILS = [
+    'db4sail@yahoo.co.uk',
+    'jessicabergerstedt@icloud.com'
+  ];
+
+  const isAdmin = session?.user?.email && ADMIN_EMAILS.includes(session.user.email);
+
   return (
     <Router>
       <ScrollToTop />
@@ -92,8 +100,12 @@ function App() {
           <Route path="/sustainability" element={session ? <Sustainability /> : <Navigate to="/login" />} />
           <Route path="/eco-consciousness" element={session ? <EcoConsciousness /> : <Navigate to="/login" />} />
           <Route path="/community" element={session ? <Community /> : <Navigate to="/login" />} />
-          <Route path="/admin" element={session ? <Admin /> : <Navigate to="/login" />} />
-          <Route path="/admin/manage" element={session ? <ManagePosts /> : <Navigate to="/login" />} />
+
+          {/* Admin Routes with strict email check */}
+          <Route path="/admin" element={isAdmin ? <Admin /> : (session ? <Navigate to="/" /> : <Navigate to="/login" />)} />
+          <Route path="/admin/manage" element={isAdmin ? <ManagePosts /> : (session ? <Navigate to="/" /> : <Navigate to="/login" />)} />
+          <Route path="/admin/properties" element={isAdmin ? <ManageProperties /> : (session ? <Navigate to="/" /> : <Navigate to="/login" />)} />
+
           <Route path="/my-story" element={session ? <MyStory /> : <Navigate to="/login" />} />
           <Route path="/why" element={session ? <Why /> : <Navigate to="/login" />} />
           <Route path="/future" element={session ? <Future /> : <Navigate to="/login" />} />
