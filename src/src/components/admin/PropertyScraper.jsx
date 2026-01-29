@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Globe, Link as LinkIcon, Sparkles, Loader2, CheckCircle, AlertCircle, X, RotateCcw } from 'lucide-react';
 
 /**
