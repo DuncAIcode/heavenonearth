@@ -39,9 +39,9 @@ const MyStory = () => {
                     <div className="relative w-full h-full">
                         <div className="absolute inset-0 bg-heaven-emerald/10 blur-3xl rounded-full" />
                         <img
-                            src="/jessica.jpg"
+                            src="/jessica_optimized.png"
                             alt="Jessica"
-                            className="relative w-full h-full object-cover rounded-2xl border border-heaven-emerald/20 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                            className="relative w-full h-full object-cover rounded-2xl border border-heaven-emerald/20 shadow-2xl transition-all duration-700"
                         />
                         <div className="absolute -bottom-3 -left-3 w-16 h-16 border-b border-l border-heaven-emerald/30" />
                         <div className="absolute -top-3 -right-3 w-16 h-16 border-t border-r border-heaven-emerald/30" />
