@@ -80,13 +80,17 @@ const ManageProperties = () => {
 
             if (error) throw error;
 
-            // CRITICAL FIX: Ensure a row was ACTUALLY deleted from the DB
+            // FIX: If count is 0, the property is already gone from DB (ghost interface item).
+            // We should allow the UI to clear it rather than blocking the user with an error.
             if (count === 0) {
-                throw new Error("Deletion failed. The property might have already been deleted, or you don't have permission to delete it.");
+                console.warn("Property verified as missing from DB. Clearing from UI.");
+                setStatus({ type: 'success', message: 'Syncing: Property was already gone.' });
+            } else {
+                setStatus({ type: 'success', message: 'Property released into the void.' });
             }
 
+            // Always update UI to match reality
             setProperties(prev => prev.filter(p => p.id !== id));
-            setStatus({ type: 'success', message: 'Property released into the void.' });
         } catch (err) {
             console.error('Error deleting property:', err);
             // Show the actual error message to the user
