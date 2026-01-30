@@ -21,28 +21,6 @@ const Properties = () => {
     const [selectedProperty, setSelectedProperty] = useState(null);
     const [viewMode, setViewMode] = useState('list'); // 'list' or 'map'
 
-    useEffect(() => {
-        fetchProperties(true);
-
-        if (!supabase) return;
-
-        // Subscribe to real-time changes
-        const channel = supabase
-            .channel('public:properties')
-            .on(
-                'postgres_changes',
-                { event: '*', schema: 'public', table: 'properties' },
-                () => {
-                    fetchProperties(false);
-                }
-            )
-            .subscribe();
-
-        return () => {
-            supabase.removeChannel(channel);
-        };
-    }, []);
-
     const fetchProperties = async (showLoader = true) => {
         if (showLoader) setLoading(true);
 
@@ -60,6 +38,28 @@ const Properties = () => {
             if (showLoader) setLoading(false);
         }
     };
+
+    useEffect(() => {
+        fetchProperties(true);
+
+        // Subscribe to real-time changes
+        if (supabase) {
+            const channel = supabase
+                .channel('public:properties')
+                .on(
+                    'postgres_changes',
+                    { event: '*', schema: 'public', table: 'properties' },
+                    () => {
+                        fetchProperties(false);
+                    }
+                )
+                .subscribe();
+
+            return () => {
+                supabase.removeChannel(channel);
+            };
+        }
+    }, []);
 
     return (
         <div className="min-h-screen bg-heaven-dark text-heaven-starlight overflow-hidden pt-24 pb-20">
