@@ -22,11 +22,28 @@ const Properties = () => {
     const [viewMode, setViewMode] = useState('list'); // 'list' or 'map'
 
     useEffect(() => {
-        fetchProperties();
+        fetchProperties(true);
+
+        // Subscribe to real-time changes
+        const channel = supabase
+            .channel('public:properties')
+            .on(
+                'postgres_changes',
+                { event: '*', schema: 'public', table: 'properties' },
+                () => {
+                    fetchProperties(false);
+                }
+            )
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
     }, []);
 
-    const fetchProperties = async () => {
-        setLoading(true);
+    const fetchProperties = async (showLoader = true) => {
+        if (showLoader) setLoading(true);
+
         try {
             const { data, error } = await supabase
                 .from('properties')
@@ -38,7 +55,7 @@ const Properties = () => {
         } catch (err) {
             console.error('Error fetching properties:', err);
         } finally {
-            setLoading(false);
+            if (showLoader) setLoading(false);
         }
     };
 

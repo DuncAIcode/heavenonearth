@@ -79,9 +79,10 @@ const ManageProperties = () => {
 
             if (error) throw error;
 
-            // If RLS silently blocks deletion, count might be 0 (depending on policy setup)
-            // But usually RLS error is thrown. 
-            // However, we can also check if the item persists if we want to be paranoid.
+            // CRITICAL FIX: Ensure a row was ACTUALLY deleted from the DB
+            if (count === 0) {
+                throw new Error("Deletion failed. The property might have already been deleted, or you don't have permission to delete it.");
+            }
 
             setProperties(prev => prev.filter(p => p.id !== id));
             setStatus({ type: 'success', message: 'Property released into the void.' });
@@ -89,6 +90,9 @@ const ManageProperties = () => {
             console.error('Error deleting property:', err);
             // Show the actual error message to the user
             setStatus({ type: 'error', message: `Release failed: ${err.message || err.error_description || 'Unknown error'}` });
+
+            // Optional: Refetch to ensure UI is in sync with reality
+            fetchProperties();
         }
     };
 
