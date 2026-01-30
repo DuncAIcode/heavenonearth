@@ -24,6 +24,8 @@ const Properties = () => {
     useEffect(() => {
         fetchProperties(true);
 
+        if (!supabase) return;
+
         // Subscribe to real-time changes
         const channel = supabase
             .channel('public:properties')
