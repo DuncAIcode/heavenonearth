@@ -72,18 +72,23 @@ const ManageProperties = () => {
         if (!confirm('Are you sure you want to release this property back to the wild?')) return;
 
         try {
-            const { error } = await supabase
+            const { error, count } = await supabase
                 .from('properties')
-                .delete()
+                .delete({ count: 'exact' })
                 .eq('id', id);
 
             if (error) throw error;
 
+            // If RLS silently blocks deletion, count might be 0 (depending on policy setup)
+            // But usually RLS error is thrown. 
+            // However, we can also check if the item persists if we want to be paranoid.
+
             setProperties(prev => prev.filter(p => p.id !== id));
-            setStatus({ type: 'success', message: 'Property released.' });
+            setStatus({ type: 'success', message: 'Property released into the void.' });
         } catch (err) {
             console.error('Error deleting property:', err);
-            setStatus({ type: 'error', message: 'Failed to delete property.' });
+            // Show the actual error message to the user
+            setStatus({ type: 'error', message: `Release failed: ${err.message || err.error_description || 'Unknown error'}` });
         }
     };
 
@@ -108,8 +113,8 @@ const ManageProperties = () => {
                     <button
                         onClick={() => setIsAdding(!isAdding)}
                         className={`flex items-center gap-3 px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest transition-all ${isAdding
-                                ? 'bg-red-500/10 text-red-200 border border-red-500/20'
-                                : 'bg-heaven-emerald text-heaven-dark shadow-lg shadow-heaven-emerald/20'
+                            ? 'bg-red-500/10 text-red-200 border border-red-500/20'
+                            : 'bg-heaven-emerald text-heaven-dark shadow-lg shadow-heaven-emerald/20'
                             }`}
                     >
                         {isAdding ? <X size={18} /> : <Plus size={18} />}

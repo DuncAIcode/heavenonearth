@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe, Link as LinkIcon, Sparkles, Loader2, CheckCircle, AlertCircle, X, RotateCcw } from 'lucide-react';
+import { Globe, Link as LinkIcon, Sparkles, Loader2, CheckCircle, AlertCircle, X, RotateCcw, Pencil, Image as ImageIcon } from 'lucide-react';
 
 /**
  * PropertyScraper Component
  * 
  * A modular component for extracting property data from a URL and restyling it.
- * Designed to be self-contained for easy redesign or replacement.
+ * Designed to be self-contained for easy redesign or redesign.
  * 
  * @param {Function} onManifest - Callback when a property is ready to be saved to DB
  */
@@ -16,6 +16,7 @@ const PropertyScraper = ({ onManifest }) => {
     const [isScraping, setIsScraping] = useState(false);
     const [scrapedData, setScrapedData] = useState(null);
     const [isAligning, setIsAligning] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
 
     const handleScrape = async () => {
         if (!url) {
@@ -84,6 +85,9 @@ const PropertyScraper = ({ onManifest }) => {
 
             // Ensure main image is in the gallery if not already present
             let galleryImages = extracted.images || [];
+            // Remove nulls and ensure validity
+            galleryImages = galleryImages.filter(img => img && img.startsWith('http'));
+
             if (mainImage && !mainImage.includes('placedog') && !galleryImages.includes(mainImage)) {
                 galleryImages = [mainImage, ...galleryImages];
             }
@@ -102,7 +106,7 @@ const PropertyScraper = ({ onManifest }) => {
             };
 
             setScrapedData(mappedData);
-            setStatus({ type: 'success', message: 'Raw data captured via Firecrawl. Align with Sanctuary to refine.' });
+            setStatus({ type: 'success', message: 'Raw data captured via Firecrawl. Edit or Align to refine.' });
         } catch (error) {
             setStatus({ type: 'error', message: `The extraction ritual failed: ${error.message}` });
         } finally {
@@ -122,13 +126,14 @@ const PropertyScraper = ({ onManifest }) => {
 
             const alignedData = {
                 ...scrapedData,
-                title: `The ${scrapedData.original_title.split(' ')[1]} Sanctuary at Emerald Ridge`,
-                description: `A manifestation of luxury and nature in perfect equilibrium. This ${scrapedData.original_description.toLowerCase().replace('viva', 'dwelling')} acts as a bridge between high-living and the ancient wisdom of the rainforest canopy. Every breath taken here is filtered through the vibrant lungs of the jungle, offering a recalibration of the spirit.`,
+                title: `The ${scrapedData.original_title.split(' ')[1] || 'Sanctuary'} at Emerald Ridge`,
+                description: `A manifestation of luxury and nature in perfect equilibrium. This ${scrapedData.original_description.toLowerCase().slice(0, 100)}... acts as a bridge between high-living and the ancient wisdom of the rainforest canopy. Every breath taken here is filtered through the vibrant lungs of the jungle, offering a recalibration of the spirit.`,
                 features: [
                     "Regenerative Architecture",
                     "Infinity Manifestation Pool",
                     "Solar-Spirit Integration",
-                    "Ancient Canopy Proximity"
+                    "Ancient Canopy Proximity",
+                    ...scrapedData.features.slice(0, 2)
                 ]
             };
 
@@ -147,6 +152,7 @@ const PropertyScraper = ({ onManifest }) => {
             // reset state
             setUrl('');
             setScrapedData(null);
+            setIsEditing(false);
         }
     };
 
@@ -185,13 +191,75 @@ const PropertyScraper = ({ onManifest }) => {
                             exit={{ opacity: 0, y: -20 }}
                             className="space-y-6 pt-6 border-t border-heaven-emerald/5"
                         >
-                            {/* Preview Area */}
+                            {/* Toggle Edit Mode */}
+                            <div className="flex justify-end">
+                                <button
+                                    onClick={() => setIsEditing(!isEditing)}
+                                    className={`flex items-center gap-2 px-3 py-1 rounded-lg text-[10px] uppercase tracking-widest transition-colors ${isEditing ? 'bg-heaven-emerald text-heaven-dark' : 'text-heaven-starlight/40 hover:text-heaven-emerald'
+                                        }`}
+                                >
+                                    <Pencil size={12} />
+                                    {isEditing ? 'Done Editing' : 'Edit Data'}
+                                </button>
+                            </div>
+
+                            {/* Main Image Preview */}
                             <div className="aspect-video relative rounded-2xl overflow-hidden border border-white/5">
                                 <img src={scrapedData.image_url} alt="Listing" className="w-full h-full object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-heaven-dark to-transparent opacity-60" />
                                 <div className="absolute bottom-4 left-4 right-4">
                                     <h4 className="text-heaven-starlight font-serif text-lg">{scrapedData.title || scrapedData.original_title}</h4>
                                     <p className="text-heaven-emerald text-xs font-bold uppercase tracking-widest">{scrapedData.location}</p>
+                                </div>
+                            </div>
+
+                            {/* Edit Fields */}
+                            {isEditing && (
+                                <div className="space-y-4 p-4 bg-black/20 rounded-xl">
+                                    <div>
+                                        <label className="text-[10px] uppercase tracking-widest text-heaven-emerald/60">Main Image URL</label>
+                                        <input
+                                            type="text"
+                                            value={scrapedData.image_url}
+                                            onChange={(e) => setScrapedData({ ...scrapedData, image_url: e.target.value })}
+                                            className="w-full bg-heaven-dark/60 border border-white/5 rounded-lg p-2 text-xs text-heaven-starlight mt-1 focus:border-heaven-emerald/50 outline-none"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="text-[10px] uppercase tracking-widest text-heaven-emerald/60">Gallery Images (One URL per line)</label>
+                                        <textarea
+                                            rows={4}
+                                            value={scrapedData.images ? scrapedData.images.join('\n') : ''}
+                                            onChange={(e) => setScrapedData({ ...scrapedData, images: e.target.value.split('\n').filter(s => s.trim()) })}
+                                            className="w-full bg-heaven-dark/60 border border-white/5 rounded-lg p-2 text-xs text-heaven-starlight mt-1 focus:border-heaven-emerald/50 outline-none font-mono"
+                                        />
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Gallery Preview */}
+                            <div className="space-y-2">
+                                <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-heaven-emerald/60">
+                                    <ImageIcon size={12} />
+                                    <span>Gallery Preview ({scrapedData.images?.length || 0})</span>
+                                </div>
+                                <div className="grid grid-cols-4 gap-2">
+                                    {scrapedData.images && scrapedData.images.map((img, idx) => (
+                                        <div key={idx} className="aspect-square rounded-lg overflow-hidden border border-white/5 relative group">
+                                            <img src={img} alt={`Gallery ${idx}`} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                                            {isEditing && (
+                                                <button
+                                                    onClick={() => setScrapedData({
+                                                        ...scrapedData,
+                                                        images: scrapedData.images.filter((_, i) => i !== idx)
+                                                    })}
+                                                    className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                                                >
+                                                    <X size={8} />
+                                                </button>
+                                            )}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
@@ -214,7 +282,7 @@ const PropertyScraper = ({ onManifest }) => {
                                 <div className="space-y-4">
                                     <label className="text-[10px] uppercase tracking-[0.3em] text-heaven-emerald/60">Features</label>
                                     <ul className="grid grid-cols-2 gap-2">
-                                        {scrapedData.features.map((feature, i) => (
+                                        {(scrapedData.features || []).map((feature, i) => (
                                             <li key={i} className="flex items-center gap-2 text-[10px] text-heaven-starlight/40 uppercase tracking-widest">
                                                 <div className="w-1 h-1 bg-heaven-emerald rounded-full" />
                                                 {feature}
