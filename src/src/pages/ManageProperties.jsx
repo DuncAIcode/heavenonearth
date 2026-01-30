@@ -12,7 +12,8 @@ import {
     Trash2,
     CheckCircle,
     X,
-    Filter
+    Filter,
+    AlertCircle
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useNavigate, Link } from 'react-router-dom';
